@@ -7,12 +7,15 @@ body {
     justify-content: center;
 }
 
-.home {
+@mixin default-layout {
     height: 100vw;
     width: 66vw;
     display: grid;
     align-content: space-around;
-    // justify-items: stretch;
+}
+
+.home {
+    @include default-layout();
 }
 
 .logo-main, .recent-posts {
@@ -28,36 +31,58 @@ $color-gray-one: #666666;
 $color-gray-two: #b3b3b3;
 $color-blue-one: #0079ff;
 
-.search-bar__wrapper {
+.search-bar {
     display: grid;
-    width: 100%;
-    row-gap: 23px;
 
-    input {
-        padding-left: 35px;
-        color: $color-gray-one;
-        box-shadow:2px 3px 20px 1px rgba(0,0,0,0.1);
-        border: 0px solid transparent;
-        border-radius: 5px;
-        height: 118px;
-        font-size: 40px;
-        transition: .2s ease-in-out;
-        
-        &::placeholder {
-            color: $color-gray-two;
-            font-family: 'Font Awesome\ 5 Free', 'Lato', Arial, Helvetica, sans-serif;
-            font-weight: 600;
+    .search-bar__wrapper {
+        display: grid;
+        width: 100%;
+        row-gap: 23px;
+
+        input {
+            padding-left: 35px;
+            color: $color-gray-one;
+            box-shadow:2px 3px 20px 1px rgba(0,0,0,0.1);
+            border: 0px solid transparent;
+            border-radius: 5px;
+            transition: .2s ease-in-out;
+            
+            &::placeholder {
+                color: $color-gray-two;
+                font-family: 'Font Awesome\ 5 Free', 'Lato', Arial, Helvetica, sans-serif;
+                font-weight: 600;
+            }
+
+            &:focus {
+                outline: none;
+                box-shadow: 2px 3px 20px 1px rgba(0,0,0,0.3);
+            }
         }
-
-        &:focus {
-            outline: none;
-            box-shadow: 2px 3px 20px 1px rgba(0,0,0,0.3);
+        p {
+            text-align: right;
+            font-size: 14px;
+            color: $color-gray-two;
         }
     }
-    p {
-        text-align: right;
-        font-size: 14px;
-        color: $color-gray-two;
+}
+
+.search-bar__home {
+    align-content: center;
+    justify-items: center;
+
+    input {
+        height: 118px;
+        font-size: 40px;
+    }
+}
+
+.search-bar__results {
+    align-content: start;
+    justify-items: center;
+
+    input {
+        font-size: 21px;
+        height: 36px;
     }
 }
 
@@ -90,4 +115,8 @@ ul {
                 grid-gap: 42px;
             }
         }
+}
+
+.results {
+    @include default-layout();
 }
