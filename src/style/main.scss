@@ -74,6 +74,10 @@ $color-blue-one: #0079ff;
     input {
         height: 118px;
         font-size: 40px;
+        @media screen and (max-width: 600px) {
+            font-size: 23px;
+            height: 59px;
+        }
     }
 }
 
@@ -117,9 +121,10 @@ ul {
             }
             .recent-posts-post {
                 display: grid;
-                justify-content: space-evenly;
-                grid-template-columns: 1fr 1fr 1fr;
                 grid-gap: 42px;
+                @media screen and (min-width: 700px) {
+                    grid-template-columns: 1fr 1fr 1fr;
+                }
             }
         }
 }
